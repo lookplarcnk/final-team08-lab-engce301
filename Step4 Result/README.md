@@ -1,36 +1,70 @@
-# STEP1
+# STEP4
+ให้ดัดแปลงโปรแกรมใน Step1 ทำการ Login จากฐานข้อมูลได้จริง โดยใช้ email/password  ที่ใช้ทดสอบ คือ
 
-This work is a fork from:
-[Build and Deploy a Web Application With React and Node.js+Express](https://medium.com/geekculture/build-and-deploy-a-web-application-with-react-and-node-js-express-bce2c3cfec32)
+		pia.fossdal@example.com
+		preston
 
-## Client 
+สร้าง 2 ไฟล์ ใน directory Step1/server/ และปรับปรุงให้ตรงกับที่ต้องการ
+env.js
+dbconfig.js
 
-### Before run this project, please run this command in your terminal
-On Unix-like (Linux, macOS, Git bash, etc.):
-   
-    export NODE_OPTIONS=--openssl-legacy-provider
+ใน directory Step1/server/ ติดตั้ง
 
-On Windows command prompt:
-    
-    set NODE_OPTIONS=--openssl-legacy-provider
+npm install mysql
+	
+แก้ไขไฟล์
 
-On PowerShell:
-    
-    $env:NODE_OPTIONS = "--openssl-legacy-provider"
+Step1/server/controllers/auth.js
+const { response } = require("express");
 
-### To Run the project execute following commands in sequence
-In the project directory, you can run:
+let mysql = require('mysql');
+const env = require('../env.js');
+const config = require('../dbconfig.js')[env];
 
-    1. npm install
-    2. npm start
+const login = async (req, res = response) => {
+  const { email, password } = req.body;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ // const email = req.body.email;
+ // const password  = req.body.password;
 
+  //----------------------
 
-## Server
-### To Run the project execute following commands in sequence
+  let dbcon = mysql.createConnection(config);
 
-    1. npm install
-    2. npm run server
+  const userDetails = "SELECT * FROM users where email = '" + email + "'";
+  console.log(userDetails);
 
+  dbcon.query(userDetails, function (err, user) {
+    console.log(user);
+
+    if (user.length > 0) {
+
+      if (password !== user[0].password) {
+        return res.status(400).json({
+          msg: "User / Password are incorrect",
+        });
+      }
+
+      res.status(200).json({ user })
+
+      /*
+            res.json({
+              name: "Test User",
+              token: "A JWT token to keep the user logged in.",
+              msg: "Successful login",
+            });
+      */
+
+    } else { //  if (user.length > 0) 
+
+      // User not found
+      return res.status(401).json({ message: "User not found !" })
+
+    }
+  })
+
+};
+
+module.exports = {
+  login,
+};
