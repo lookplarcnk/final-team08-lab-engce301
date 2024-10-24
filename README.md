@@ -1,9 +1,25 @@
-# ระบบจัดการร้านขายหนังสือออนไลน์
-1. เอกสาร Feasibility Study Report https://drive.google.com/file/d/1JpsbQNyNICIRbeg9AtKx1ZzJJpyPzVwO/view?usp=sharing
-2. เอกสารสำหรับนำเสนอ (Presentation) https://www.canva.com/design/DAGNZIx1Dlc/prlroezyDUut1LylZGSElQ/edit?utm_content=DAGNZIx1Dlc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-3. คลิปวิดีโอการนำเสนอ https://livermutlac.sharepoint.com/:v:/s/teams-1-67-ENGCE301/ESBJxWHzLLtEjj_H5KiyEwgBXbUD7TNCdqCCiY2MDb44tw
-4. User Story https://miro.com/welcomeonboard/YjNZdkN0NzU0NzYyZlJhdHg1Q29xNUY5eVhpeDNCWVBXbWNSakE1MFdsV3FDejFEeDFvdmUzc014VmpJRWw2eHwzNDU4NzY0NTk1OTgwNDE0ODM3fDI=?share_link_id=631615088244
-5. เอกสาร Project Charter https://drive.google.com/file/d/1zSyRDNT1v51yHcD8ST7TV_Q0QUatOJmP/view?usp=sharing
+# STEP2
+This work is a fork from:
+[Build An Amazing Application Using React and Node together](https://javascript.plainenglish.io/build-an-amazing-application-using-react-and-nodejs-together-fad13ab7b49c)
 
-# ซอฟต์แวร์สำเร็จรูป LINE
-https://miro.com/welcomeonboard/VWNQN1JJV3ZLaEIwTFZCSmd5bzNMbEN5UjZIWkd6N3hLRDlmY3RwdzdZSFlkR2ZPMUtzSzRxSE52Qk1EcFgzd3wzNDU4NzY0NTk1OTgwNDE0ODM3fDI=?share_link_id=213849234820
+## Before run this project, please run this command in your terminal
+On Unix-like (Linux, macOS, Git bash, etc.):
+   
+    export NODE_OPTIONS=--openssl-legacy-provider
+
+On Windows command prompt:
+    
+    set NODE_OPTIONS=--openssl-legacy-provider
+
+On PowerShell:
+    
+    $env:NODE_OPTIONS = "--openssl-legacy-provider"
+
+## To Run the project execute following commands in sequence
+
+    1. npm install
+    2. npm run build
+    3. npm run start-server
+
+## Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
